@@ -18,6 +18,16 @@
   color: white;
 }
 
+.zoom.service {
+  background: var(--tealGreen);
+}
+.zoom.feature {
+  background: var(--orangeYellow);
+}
+.zoom.data {
+  background: var(--purpleBlue);
+}
+
 body {
   margin: 0;
 }
@@ -139,7 +149,7 @@ body {
 
 .fade.enter-active {
   opacity: 1;
-  transition: opacity 100ms, transform 200ms;
+  transition: opacity 150ms, transform 200ms;
 }
 
 .fade.exit {
@@ -148,7 +158,7 @@ body {
 
 .fade.exit-active {
   opacity: 0;
-  transition: opacity 100ms, transform 200ms;
+  transition: opacity 150ms, transform 200ms;
 }
 
 .home {

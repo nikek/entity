@@ -8,7 +8,7 @@ import "./App.css";
 
 const pages = [
   {
-    name: "home",
+    name: "/",
     Component: Home,
     type: "fade"
   },
@@ -38,13 +38,20 @@ const pages = [
 
 export function App() {
   const [current] = useRouter();
+  console.log(current);
+
+  const page =
+    current && current.path.length > 1 ? current.path.split("/")[1] : "/";
+
+  console.log(page);
+
   return (
     <Fragment>
       <Header />
       {pages.map(({ name, Component, type }, i) => (
         <CSSTransition
           key={i}
-          in={current === name}
+          in={page === name}
           timeout={200}
           unmountOnExit
           className={type}

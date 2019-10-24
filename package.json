@@ -18,6 +18,7 @@
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
+    "page": "^1.11.5",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-transition-group": "^4.3.0"
