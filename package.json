@@ -3,9 +3,21 @@
   "version": "0.0.1",
   "description": "Playground for ux patterns and tech",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nikek/entity"
+  },
   "scripts": {
+    "start": "npx parcel index.html",
+    "build": "npx parcel build index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "nikek",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "preact": "^10.0.1"
+  }
 }
