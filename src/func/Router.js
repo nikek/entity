@@ -9,6 +9,9 @@ export const RouterProvider = ({ children }) => {
   }));
 
   useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      page.base("/entity");
+    }
     page("/service/:id", unary(setRouter));
     page("/feature/:id", unary(setRouter));
     page("/data/:id", unary(setRouter));
