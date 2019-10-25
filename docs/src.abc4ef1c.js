@@ -87,4 +87,4 @@ var r,e;module.exports=require("./factoryWithThrowingShims")();
 },{"react":"n8MK","./Header":"RngN","./Home":"DTNh","./ServicePage":"gDO9","./FeaturePage":"Do3Z","./DataPage":"eGnv","../func/Router.js":"Wp5U","react-transition-group":"ORBw","./App.css":"NPmj"}],"uBxZ":[function(require,module,exports) {
 "use strict";var e=n(require("react")),r=n(require("react-dom")),t=require("./components/App.jsx"),u=require("./func/Router.js");function n(e){return e&&e.__esModule?e:{default:e}}r.default.render(e.default.createElement(u.RouterProvider,null,e.default.createElement(t.App,null)),document.getElementById("root"));
 },{"react":"n8MK","react-dom":"NKHc","./components/App.jsx":"X8le","./func/Router.js":"Wp5U"}]},{},["uBxZ"], null)
-//# sourceMappingURL=/src.abc4ef1c.js.map
+//# sourceMappingURL=/entity/src.abc4ef1c.js.map
