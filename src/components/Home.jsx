@@ -1,29 +1,23 @@
 import React from "react";
-import { useRouter } from "../Router.js";
-import { writeCSS } from "../cssWriter.js";
-import { getEntity } from "../Entity";
-
-const services = [
-  { id: "service_1", name: "Service 1", owner: "Team X" },
-  { id: "service_2", name: "Service 2", owner: "Team X" },
-  { id: "service_3", name: "Service 3", owner: "Team X" },
-  { id: "service_4", name: "Service 4", owner: "A Team" },
-  { id: "service_5", name: "Service 5", owner: "A Team" }
-];
+import { useRouter } from "../func/Router.js";
+import { writeCSS } from "../func/cssWriter.js";
+import { getEntity } from "../func/Entity.js";
+import { Shelf } from "./Shelf";
 
 const createNavFn = navigate => to => id => evt => {
   const styles = evt.target.getBoundingClientRect();
   const bg = getComputedStyle(evt.target).getPropertyValue("background");
-  // nav
-  console.log(styles);
 
-  // cardPage.style.transform = `translate3d(${invertX}px,${invertY}px, 0px) scale(${scaleX}, ${scaleY})`;
+  const scaleX = styles.width / window.innerWidth;
+  const scaleY = styles.height / 200;
+
+  writeCSS(
+    "--page-transform",
+    `translate3d(${styles.x}px,${styles.y -
+      42}px, 0px) scale(${scaleX}, ${scaleY})`
+  );
 
   writeCSS("--page-bg", bg);
-  writeCSS("--page-width", styles.width + "px");
-  writeCSS("--page-height", styles.height + "px");
-  writeCSS("--page-top", styles.y + "px");
-  writeCSS("--page-left", styles.x + "px");
 
   navigate(to + "/" + id);
   window.scrollTo({
@@ -34,6 +28,7 @@ const createNavFn = navigate => to => id => evt => {
 
 export function Home() {
   const [, navigate] = useRouter();
+
   const toFn = createNavFn(navigate);
   const serviceClickHandler = toFn("/service");
   const featureClickHandler = toFn("/feature");
@@ -43,36 +38,24 @@ export function Home() {
   return (
     <div className="page fade home">
       <h1>Shelves</h1>
-      <section>
-        <h2>Service</h2>
-        <ul className="list list--service">
-          {entities.services.map((serv, i) => (
-            <li className="item" key={i} onClick={serviceClickHandler(serv.id)}>
-              {serv.name}
-            </li>
-          ))}
-        </ul>
-      </section>
-      <section>
-        <h2>Feature</h2>
-        <ul className="list list--feature">
-          {entities.features.map((feat, i) => (
-            <li className="item" key={i} onClick={featureClickHandler(feat.id)}>
-              {feat.name}
-            </li>
-          ))}
-        </ul>
-      </section>
-      <section>
-        <h2>Data</h2>
-        <ul className="list list--data">
-          {entities.data.map((da, i) => (
-            <li className="item" key={i} onClick={dataClickHandler(da.id)}>
-              {da.name}
-            </li>
-          ))}
-        </ul>
-      </section>
+      <Shelf
+        title="Service"
+        id="service"
+        items={entities.services}
+        clickHandler={serviceClickHandler}
+      />
+      <Shelf
+        title="Feature"
+        id="feature"
+        items={entities.features}
+        clickHandler={featureClickHandler}
+      />
+      <Shelf
+        title="Data"
+        id="data"
+        items={entities.data}
+        clickHandler={dataClickHandler}
+      />
     </div>
   );
 }

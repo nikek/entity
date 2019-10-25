@@ -1,0 +1,15 @@
+{
+  "background_color": "#303030",
+  "description": "Playground for UX patterns and tech",
+  "display": "browser",
+  "icons": [
+    {
+      "src": "/icons/entity-icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "name": "Entity",
+  "short_name": "Entity",
+  "start_url": "/"
+}

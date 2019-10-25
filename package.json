@@ -8,8 +8,8 @@
     "url": "https://github.com/nikek/entity"
   },
   "scripts": {
-    "start": "npx parcel src/index.html",
-    "build": "npx parcel build src/index.html",
+    "start": "npx parcel public/index.html",
+    "build": "npx parcel build public/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "nikek",
@@ -21,6 +21,7 @@
     "page": "^1.11.5",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-transition-group": "^4.3.0"
+    "react-transition-group": "^4.3.0",
+    "react-use": "^12.7.2"
   }
 }

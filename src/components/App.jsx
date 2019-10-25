@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useMemo } from "react";
 import { Header } from "./Header";
 import { Home } from "./Home";
 import { Service } from "./Service";
-import { useRouter } from "../Router.js";
+import { useRouter } from "../func/Router.js";
 import { CSSTransition } from "react-transition-group";
 import "./App.css";
 
@@ -38,12 +38,12 @@ const pages = [
 
 export function App() {
   const [current] = useRouter();
-  console.log(current);
 
-  const page =
-    current && current.path.length > 1 ? current.path.split("/")[1] : "/";
-
-  console.log(page);
+  const page = useMemo(
+    () =>
+      current && current.path.length > 1 ? current.path.split("/")[1] : "/",
+    [current]
+  );
 
   return (
     <Fragment>
@@ -52,7 +52,7 @@ export function App() {
         <CSSTransition
           key={i}
           in={page === name}
-          timeout={200}
+          timeout={300}
           unmountOnExit
           className={type}
         >

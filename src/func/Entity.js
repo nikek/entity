@@ -25,7 +25,7 @@ const allMap = [...all.services, ...all.features, ...all.data].reduce(
   (m, entity) => ((m[entity.id] = entity), m),
   {}
 );
-console.log(all, allMap);
+
 export const getEntity = id => {
   if (!id) {
     return all;

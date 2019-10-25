@@ -14,6 +14,7 @@
   --margin: 8px;
   --page-bg: var(--orangeYellow);
   --bg: #303030;
+  --anim-ms: 300ms;
   background-color: var(--bg);
   color: white;
 }
@@ -79,53 +80,51 @@ body {
 .zoom {
   position: absolute;
   background: var(--page-bg);
-  width: calc(100vw);
+  width: 100vw;
   height: 200px;
-  transform-origin: top left;
-
-  transition: all 200ms ease, opacity 50ms ease 150ms;
-  border-radius: 16px 16px 0 0;
   top: 42px;
   left: 0;
+  transform-origin: top left;
+
+  transition: all var(--anim-ms) ease, opacity 50ms ease 150ms;
+  border-radius: 16px 16px 0 0;
 }
 .zoom.enter {
   position: absolute;
   border-radius: 8px;
-  width: var(--page-width);
-  height: var(--page-height);
-  top: var(--page-top);
-  left: var(--page-left);
+  transform: var(--page-transform);
 }
-.zoom.enter > * {
-  transition: opacity 200ms ease;
-  opacity: 0;
-}
+
 .zoom.enter-active {
   border-radius: 16px 16px 0 0;
-  width: calc(100vw);
-  height: 200px;
-  top: 42px;
-  left: 0;
+  transform: none;
 }
-.zoom.enter-done > * {
-  transition: opacity 100ms ease;
-  opacity: 1;
-}
+
 .zoom.exit {
   position: absolute;
   opacity: 1;
-}
-.zoom.exit > * {
-  transition: opacity 100ms ease;
-  opacity: 0;
+  transition: transform var(--anim-ms) ease,
+    opacity calc(var(--anim-ms) / 4) ease calc(var(--anim-ms) * 0.75);
 }
 
 .zoom.exit-active {
-  width: var(--page-width);
-  height: var(--page-height);
-  top: var(--page-top);
-  left: var(--page-left);
+  transform: var(--page-transform);
   border-radius: 8px;
+  opacity: 0;
+}
+
+.zoom.enter > *,
+.zoom.enter-done > *,
+.zoom.exit > * {
+  transition: opacity 200ms ease;
+}
+.zoom.enter > * {
+  opacity: 0;
+}
+.zoom.enter-done > * {
+  opacity: 1;
+}
+.zoom.exit > * {
   opacity: 0;
 }
 
@@ -149,7 +148,8 @@ body {
 
 .fade.enter-active {
   opacity: 1;
-  transition: opacity 150ms, transform 200ms;
+  transition: opacity calc(var(--anim-ms) / 2) ease calc(var(--anim-ms) / 2),
+    transform var(--anim-ms);
 }
 
 .fade.exit {
@@ -158,7 +158,7 @@ body {
 
 .fade.exit-active {
   opacity: 0;
-  transition: opacity 150ms, transform 200ms;
+  transition: opacity calc(var(--anim-ms) / 2) ease, transform var(--anim-ms);
 }
 
 .home {

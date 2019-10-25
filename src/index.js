@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { App } from "./components/App.jsx";
-import { RouterProvider } from "./Router.js";
+import { RouterProvider } from "./func/Router.js";
 
 ReactDOM.render(
   <RouterProvider>
