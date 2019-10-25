@@ -2,7 +2,7 @@
   "name": "entity",
   "version": "0.0.1",
   "description": "Playground for ux patterns and tech",
-  "main": "index.js",
+  "homepage": "https://nikek.github.io/entity",
   "repository": {
     "type": "git",
     "url": "https://github.com/nikek/entity"
