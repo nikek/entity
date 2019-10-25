@@ -86,7 +86,7 @@ body {
   left: 0;
   transform-origin: top left;
 
-  transition: all var(--anim-ms) ease, opacity 50ms ease 150ms;
+  transition: transform var(--anim-ms) ease, opacity 50ms ease 150ms;
   border-radius: 16px 16px 0 0;
 }
 .zoom.enter {

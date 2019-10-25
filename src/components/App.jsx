@@ -1,7 +1,9 @@
 import React, { Fragment, useMemo } from "react";
 import { Header } from "./Header";
 import { Home } from "./Home";
-import { Service } from "./Service";
+import { ServicePage } from "./ServicePage";
+import { FeaturePage } from "./FeaturePage";
+import { DataPage } from "./DataPage";
 import { useRouter } from "../func/Router.js";
 import { CSSTransition } from "react-transition-group";
 import "./App.css";
@@ -14,17 +16,17 @@ const pages = [
   },
   {
     name: "service",
-    Component: Service,
+    Component: ServicePage,
     type: "zoom"
   },
   {
     name: "feature",
-    Component: Service,
+    Component: FeaturePage,
     type: "zoom"
   },
   {
     name: "data",
-    Component: Service,
+    Component: DataPage,
     type: "zoom"
   }
 ];

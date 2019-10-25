@@ -2,7 +2,19 @@ import React from "react";
 import { useRouter } from "../func/Router.js";
 import { getEntity } from "../func/Entity.js";
 
-export function Service() {
+function TabNav() {
+  return (
+    <nav>
+      <ul>
+        <li>Main</li>
+        <li>Builds</li>
+        <li>Deploy</li>
+      </ul>
+    </nav>
+  );
+}
+
+export function FeaturePage() {
   const [current, navigate] = useRouter();
   const page =
     current && current.path.length > 1 ? current.path.split("/")[1] : "/";
@@ -21,6 +33,9 @@ export function Service() {
         </button>
         <h1>{service.name}</h1>
       </header>
+      <div>
+        <TabNav></TabNav>
+      </div>
     </section>
   );
 }
