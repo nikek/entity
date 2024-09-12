@@ -1,11 +1,12 @@
 import React, { createContext, useEffect, useState, useContext } from "react";
+import { flushSync } from "react-dom";
 import page from "page";
 import { unary } from "./functional";
 export const RouterContext = createContext();
 
 export const RouterProvider = ({ children }) => {
   const [router, setRouter] = useState(() => ({
-    path: window.location.pathname
+    path: window.location.pathname,
   }));
 
   useEffect(() => {
@@ -19,8 +20,16 @@ export const RouterProvider = ({ children }) => {
     page();
   }, []);
 
+  const navigate = (path) => {
+    document.startViewTransition(() => {
+      flushSync(() => {
+        page.show(path);
+      });
+    });
+  };
+
   return (
-    <RouterContext.Provider value={[router, page.show]}>
+    <RouterContext.Provider value={[router, navigate]}>
       {children}
     </RouterContext.Provider>
   );

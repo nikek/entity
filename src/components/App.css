@@ -66,6 +66,13 @@ body {
   height: 100px;
   padding: 8px;
   border-radius: 8px;
+  border: none;
+  color: inherit;
+
+  display: grid;
+  place-items: start;
+
+  font-size: inherit;
 }
 .list--service .item {
   background: var(--tealGreen);

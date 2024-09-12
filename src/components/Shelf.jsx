@@ -1,4 +1,5 @@
 import React, { useCallback, useState, useEffect, useRef } from "react";
+import { useRouter } from "../func/Router";
 
 function formatPos(thing) {
   return (
@@ -14,7 +15,7 @@ function useScrollRestore(id) {
   const [waiting, setWaiting] = useState(false);
   const ref = useRef(null);
 
-  const handleScroll = useCallback(e => {
+  const handleScroll = useCallback((e) => {
     if (waiting) {
       return;
     }
@@ -44,14 +45,20 @@ function useScrollRestore(id) {
 }
 
 export function Shelf({ title, id, clickHandler, items }) {
+  const [, navigate] = useRouter();
   const [ref] = useScrollRestore(id);
   return (
     <section>
       <h2>{title}</h2>
       <ul className={`list list--${id}`} ref={ref}>
         {items.map((item, i) => (
-          <li className="item" key={i} onClick={clickHandler(item.id)}>
-            {item.name}
+          <li key={i}>
+            <button
+              className="item"
+              onClick={() => navigate(`/${id}/${item.id}`)}
+            >
+              {item.name}
+            </button>
           </li>
         ))}
       </ul>
